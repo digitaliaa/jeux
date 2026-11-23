@@ -1,18 +1,160 @@
-<div dir="ltr" style="font-family: Tahoma, sans-serif; line-height: 1.8; color: #333; max-width: 800px; margin: 0 auto;">
-  
-  <p style="font-size: 17px; background: #f0f7ff; padding: 15px; border-left: 5px solid #2196f3; border-radius: 8px;">
-    Welcome parents, teachers, and young learners! Help your child master the <strong>26 letters of the English Alphabet</strong> with this free, colorful interactive game. Kids can click the sound button to hear the English pronunciation, match letters to pictures (from Apple to Zebra), and practice <strong>Uppercase (Big)</strong> and <strong>Lowercase (Small)</strong> letters!
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Alphabet Adventure</title>
+</head>
+<body style="margin:0; padding:10px; background:transparent; font-family: Tahoma, sans-serif;">
 
-  <iframe src="https://github.io" width="100%" height="620" frameborder="0" loading="lazy" allow="autoplay"></iframe>
+  <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 3px solid #1e88e5; border-radius: 20px; padding: 20px; text-align: center; max-width: 750px; margin: 0 auto;">
+    <div style="background: #1e88e5; color: white; padding: 12px 20px; border-radius: 15px; margin-bottom: 15px;">
+      <h2 style="margin: 0; font-size: 22px; color: #fff;">🔤 English Alphabet Adventure (A - Z)</h2>
+      <p style="margin: 5px 0 0; font-size: 14px; color: #e3f2fd;">Listen, match the letters, and collect all 10 stars!</p>
+    </div>
 
-  <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 15px; margin-top: 20px;">
-    <h3 style="color: #1565c0; margin-top: 0;">📌 Lesson Summary: The English Alphabet</h3>
-    <ul style="margin-bottom: 0; padding-left: 20px;">
-      <li><strong>26 Letters:</strong> There are 26 letters in the English alphabet (from A to Z).</li>
-      <li><strong>Uppercase Letters (Big):</strong> A, B, C, D, E, F, G... used at the start of sentences and names.</li>
-      <li><strong>Lowercase Letters (Small):</strong> a, b, c, d, e, f, g... used for regular words.</li>
-    </ul>
+    <div id="ea-start-area" style="padding: 25px 10px;">
+      <div style="font-size: 65px; margin-bottom: 15px;">🍎🐱🦁🚀</div>
+      <p style="font-size: 18px; color: #0d47a1; font-weight: bold; margin-bottom: 20px;">Ready to learn and hear the 26 English letters?</p>
+      <button type="button" id="ea-start-btn" style="background: #ff9800; color: white; border: none; padding: 15px 35px; font-size: 20px; font-weight: bold; border-radius: 30px; cursor: pointer;">
+        🚀 Start Game Now
+      </button>
+    </div>
+
+    <div id="ea-play-wrapper" style="display: none;">
+      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 10px 15px; border-radius: 12px; margin-bottom: 20px; font-weight: bold; border: 2px solid #90caf9;">
+        <span id="ea-progress" style="color: #1565c0;">Question: 1 / 10</span>
+        <span id="ea-score" style="color: #2e7d32;">Score: 0 ⭐</span>
+      </div>
+
+      <div id="ea-quiz-area">
+        <div id="ea-emoji" style="font-size: 55px; margin-bottom: 10px;">🍎</div>
+        <button type="button" id="ea-speak-btn" style="background: #0288d1; color: white; border: none; padding: 9px 22px; font-size: 16px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-bottom: 12px;">
+          🔊 Listen
+        </button>
+        <h3 id="ea-question" style="font-size: 20px; color: #0d47a1; margin-bottom: 20px;"></h3>
+        <div id="ea-options" style="display: grid; grid-template-columns: 1fr; gap: 12px; max-width: 550px; margin: 0 auto;"></div>
+        <div id="ea-feedback" style="margin-top: 18px; font-size: 17px; font-weight: bold; padding: 8px; border-radius: 10px;"></div>
+        <button type="button" id="ea-next-btn" style="display: none; margin: 15px auto 0; background: #43a047; color: white; border: none; padding: 12px 30px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
+          Next Question ➡️
+        </button>
+      </div>
+
+      <div id="ea-result-area" style="display: none; padding: 20px;">
+        <div id="ea-final-emoji" style="font-size: 65px; margin-bottom: 10px;">🏆</div>
+        <h3 id="ea-final-title" style="font-size: 24px; color: #1565c0;">Great Job!</h3>
+        <p id="ea-final-score" style="font-size: 20px; font-weight: bold; color: #2e7d32; margin-bottom: 20px;"></p>
+        <button type="button" id="ea-restart-btn" style="background: #ff9800; color: white; border: none; padding: 14px 32px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
+          🔄 Play Again
+        </button>
+      </div>
+    </div>
   </div>
 
-</div>
+  <script>
+    const eaQuestions = [
+      { emoji: "🔢", say: "Twenty six letters", q: "How many letters are there in the English alphabet?", options: ["24 letters", "26 letters", "28 letters"], answer: 1, hint: "Awesome! There are 26 letters from A to Z." },
+      { emoji: "🍎", say: "Apple", q: "Which letter does Apple start with?", options: ["Aa", "Bb", "Cc"], answer: 0, hint: "Great job! A is for Apple." },
+      { emoji: "🦅", say: "Letter E", q: "Find the word that starts with the letter Ee:", options: ["Frog", "Goat", "Eagle"], answer: 2, hint: "Super! E is for Eagle." },
+      { emoji: "🔠", say: "Uppercase letters", q: "Which one shows Uppercase (Big) letters?", options: ["a - b - c", "A - B - C", "d - e - f"], answer: 1, hint: "Correct! A, B, C are Uppercase letters." },
+      { emoji: "🐨", say: "Koala", q: "Which letter is for Koala?", options: ["Jj", "Kk", "Ll"], answer: 1, hint: "Well done! K is for Koala." },
+      { emoji: "🦉", say: "Letter O", q: "Look at the picture. What word starts with Oo?", options: ["Owl", "Parrot", "Monkey"], answer: 0, hint: "Yes! O is for Owl." },
+      { emoji: "🔡", say: "Lowercase letter", q: "Which one is a Lowercase (Small) letter?", options: ["G", "M", "g"], answer: 2, hint: "Spot on! g is a Lowercase letter." },
+      { emoji: "🚀", say: "Letter R", q: "Which picture starts with the letter Rr?", options: ["Queen", "Rocket", "Turtle"], answer: 1, hint: "Fantastic! R is for Rocket." },
+      { emoji: "☂️", say: "Umbrella", q: "What letter does Umbrella start with?", options: ["Uu", "Vv", "Ww"], answer: 0, hint: "Great! U is for Umbrella." },
+      { emoji: "🦓", say: "Zebra", q: "What is the last letter of the alphabet (for Zebra)?", options: ["Xx", "Yy", "Zz"], answer: 2, hint: "You did it! Z is for Zebra!" }
+    ];
+
+    let eaIdx = 0, eaScore = 0, eaAnswered = false;
+
+    function eaSpeak(text) {
+      window.speechSynthesis.cancel();
+      const msg = new SpeechSynthesisUtterance(text);
+      msg.lang = "en-US";
+      msg.rate = 0.85;
+      window.speechSynthesis.speak(msg);
+    }
+
+    document.getElementById("ea-start-btn").addEventListener("click", () => {
+      document.getElementById("ea-start-area").style.display = "none";
+      document.getElementById("ea-play-wrapper").style.display = "block";
+      eaSpeak("Let's start!");
+      eaLoad();
+    });
+
+    document.getElementById("ea-speak-btn").addEventListener("click", () => {
+      eaSpeak(eaQuestions[eaIdx].say);
+    });
+
+    function eaLoad() {
+      eaAnswered = false;
+      document.getElementById("ea-feedback").innerHTML = "";
+      document.getElementById("ea-feedback").style.background = "transparent";
+      document.getElementById("ea-next-btn").style.display = "none";
+      const cur = eaQuestions[eaIdx];
+      document.getElementById("ea-progress").innerHTML = `Question: ${eaIdx + 1} / ${eaQuestions.length}`;
+      document.getElementById("ea-emoji").innerHTML = cur.emoji;
+      document.getElementById("ea-question").innerHTML = cur.q;
+      const optBox = document.getElementById("ea-options");
+      optBox.innerHTML = "";
+      cur.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.innerHTML = opt;
+        btn.style.cssText = "background:#fff;border:2px solid #64b5f6;border-radius:15px;padding:14px 18px;font-size:19px;font-weight:bold;color:#0d47a1;cursor:pointer;";
+        btn.addEventListener("click", () => {
+          eaSpeak(opt);
+          eaCheck(i, btn);
+        });
+        optBox.appendChild(btn);
+      });
+    }
+
+    function eaCheck(i, btn) {
+      if (eaAnswered) return;
+      eaAnswered = true;
+      const cur = eaQuestions[eaIdx];
+      const btns = document.getElementById("ea-options").querySelectorAll("button");
+      const fb = document.getElementById("ea-feedback");
+      if (i === cur.answer) {
+        eaScore++;
+        document.getElementById("ea-score").innerHTML = `Score: ${eaScore} ⭐`;
+        btn.style.background = "#c8e6c9";
+        btn.style.borderColor = "#2e7d32";
+        fb.innerHTML = "🎉 " + cur.hint;
+        fb.style.background = "#e8f5e9";
+        fb.style.color = "#2e7d32";
+      } else {
+        btn.style.background = "#ffcdd2";
+        btn.style.borderColor = "#c62828";
+        btns[cur.answer].style.background = "#c8e6c9";
+        btns[cur.answer].style.borderColor = "#2e7d32";
+        fb.innerHTML = "❌ Wrong! Correct answer: " + cur.options[cur.answer];
+        fb.style.background = "#ffebee";
+        fb.style.color = "#c62828";
+      }
+      const next = document.getElementById("ea-next-btn");
+      next.style.display = "inline-block";
+      next.innerHTML = (eaIdx === eaQuestions.length - 1) ? "See Final Score 🏆" : "Next Question ➡️";
+    }
+
+    document.getElementById("ea-next-btn").addEventListener("click", () => {
+      eaIdx++;
+      if (eaIdx < eaQuestions.length) eaLoad();
+      else {
+        document.getElementById("ea-quiz-area").style.display = "none";
+        document.getElementById("ea-result-area").style.display = "block";
+        document.getElementById("ea-final-score").innerHTML = `You scored ${eaScore} out of ${eaQuestions.length} stars! ⭐`;
+      }
+    });
+
+    document.getElementById("ea-restart-btn").addEventListener("click", () => {
+      eaIdx = 0; eaScore = 0;
+      document.getElementById("ea-score").innerHTML = "Score: 0 ⭐";
+      document.getElementById("ea-result-area").style.display = "none";
+      document.getElementById("ea-quiz-area").style.display = "block";
+      eaLoad();
+    });
+  </script>
+</body>
+</html>
