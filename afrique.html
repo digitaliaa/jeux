@@ -190,3 +190,56 @@
     function afCheck(isCorrect, btn, cur) {
       if (afAnswered) return;
       afAnswered = true;
+      var btns = document.getElementById("af-options").querySelectorAll("button");
+      var fb = document.getElementById("af-feedback");
+
+      if (isCorrect) {
+        afScore++;
+        playTone(true);
+        document.getElementById("af-score").innerHTML = "النقاط: " + afScore + " ⭐";
+        btn.style.background = "#c8e6c9";
+        btn.style.borderColor = "#2e7d32";
+        fb.innerHTML = "🎉 ممتاز! هذه دولة " + cur.name;
+        fb.style.background = "#e8f5e9";
+        fb.style.color = "#1b5e20";
+        setTimeout(function() { speakArabic("ممتاز! هذه دولة " + cur.name); }, 600);
+      } else {
+        playTone(false);
+        btn.style.background = "#ffcdd2";
+        btn.style.borderColor = "#c62828";
+        btns.forEach(function(b) {
+          if (b.dataset.code === cur.code) {
+            b.style.background = "#c8e6c9";
+            b.style.borderColor = "#2e7d32";
+          }
+        });
+        fb.innerHTML = "❌ إجابة خاطئة! الإجابة الصحيحة هي: " + cur.name;
+        fb.style.background = "#ffebee";
+        fb.style.color = "#c62828";
+        setTimeout(function() { speakArabic("الإجابة الصحيحة هي " + cur.name); }, 600);
+      }
+
+      var next = document.getElementById("af-next-btn");
+      next.style.display = "inline-block";
+      next.innerHTML = (gameList.length === 0) ? "عرض النتيجة النهائية 🏆" : "الدولة التالية ⬅️";
+    }
+
+    document.getElementById("af-next-btn").addEventListener("click", function() {
+      if (gameList.length > 0) {
+        afLoad();
+      } else {
+        document.getElementById("af-quiz-area").style.display = "none";
+        document.getElementById("af-result-area").style.display = "block";
+        document.getElementById("af-final-score").innerHTML = "لقد حصلت على " + afScore + " من " + totalCount + " نجوم! ⭐";
+        playTone(true);
+        speakArabic("أحسنت يا بطل! لقد حصلت على " + afScore + " من " + totalCount + " نجوم");
+      }
+    });
+
+    document.getElementById("af-restart-btn").addEventListener("click", function() {
+      document.getElementById("af-play-wrapper").style.display = "none";
+      document.getElementById("af-start-area").style.display = "block";
+    });
+  </script>
+</body>
+</html>
