@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أعلام وخرائط جميع دول قارة إفريقيا (54 دولة)</title>
+</head>
+<body style="margin:0; padding:10px; background:transparent; font-family: Tahoma, sans-serif;">
+
+  <div style="background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%); border: 3px solid #f57c00; border-radius: 20px; padding: 20px; text-align: center; max-width: 760px; margin: 0 auto;">
+    
+    <div style="background: #ef6c00; color: white; padding: 12px 20px; border-radius: 15px; margin-bottom: 15px;">
+      <h2 style="margin: 0; font-size: 22px; color: #fff;">🌍 مستكشف القارات: جميع دول إفريقيا (54 دولة)</h2>
+      <p style="margin: 5px 0 0; font-size: 14px; color: #fff3e0;">شاهد العلم والخريطة، واستمع للنطق الصحيح!</p>
+    </div>
+
+    <div id="af-start-area" style="padding: 20px 10px;">
+      <div style="font-size: 65px; margin-bottom: 12px;">🌍🗺️🚩</div>
+      <p style="font-size: 18px; color: #e65100; font-weight: bold; margin-bottom: 18px;">تضم قارة إفريقيا 54 دولة! اختر التحدي المناسب لك:</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto;">
+        <button type="button" id="af-start-15" style="background: #2e7d32; color: white; border: none; padding: 14px 25px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer;">
+          🚀 جولة سريعة (15 دولة عشوائية)
+        </button>
+        <button type="button" id="af-start-54" style="background: #d84315; color: white; border: none; padding: 14px 25px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer;">
+          🏆 التحدي الشامل (كل الـ 54 دولة)
+        </button>
+      </div>
+    </div>
+
+    <div id="af-play-wrapper" style="display: none;">
+      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 10px 15px; border-radius: 12px; margin-bottom: 18px; font-weight: bold; border: 2px solid #ffb74d;">
+        <span id="af-progress" style="color: #e65100;">السؤال: 1 / 15</span>
+        <span id="af-score" style="color: #2e7d32;">النقاط: 0 ⭐</span>
+      </div>
+
+      <div id="af-quiz-area">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 14px;">
+          
+          <div style="background: #ffffff; padding: 8px; border-radius: 14px; border: 2px solid #ffcc80; width: 170px;">
+            <div style="font-size: 12px; font-weight: bold; color: #e65100; margin-bottom: 5px;">🚩 علم الدولة</div>
+            <img id="af-flag-img" src="" alt="علم الدولة" style="width: 155px; height: 105px; object-fit: cover; border-radius: 8px; border: 1px solid #eee;">
+          </div>
+
+          <div style="background: #ffffff; padding: 8px; border-radius: 14px; border: 2px solid #81c784; width: 170px;">
+            <div style="font-size: 12px; font-weight: bold; color: #2e7d32; margin-bottom: 5px;">🗺️ خريطة الدولة</div>
+            <img id="af-map-img" src="" alt="خريطة الدولة" style="width: 105px; height: 105px; object-fit: contain;">
+          </div>
+
+        </div>
+
+        <button type="button" id="af-speak-btn" style="background: #0277bd; color: white; border: none; padding: 9px 22px; font-size: 16px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-bottom: 10px;">
+          🔊 استمع للسؤال
+        </button>
+
+        <h3 style="font-size: 20px; color: #bf360c; margin: 5px 0 16px;">ما اسم هذه الدولة الإفريقية؟</h3>
+        
+        <div id="af-options" style="display: grid; grid-template-columns: 1fr; gap: 11px; max-width: 500px; margin: 0 auto;"></div>
+        
+        <div id="af-feedback" style="margin-top: 15px; font-size: 17px; font-weight: bold; padding: 8px; border-radius: 10px;"></div>
+        
+        <button type="button" id="af-next-btn" style="display: none; margin: 14px auto 0; background: #ef6c00; color: white; border: none; padding: 12px 30px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
+          الدولة التالية ⬅️
+        </button>
+      </div>
+
+      <div id="af-result-area" style="display: none; padding: 20px;">
+        <div style="font-size: 65px; margin-bottom: 10px;">🏆</div>
+        <h3 style="font-size: 24px; color: #e65100;">أحسنت يا مستكشف إفريقيا!</h3>
+        <p id="af-final-score" style="font-size: 20px; font-weight: bold; color: #2e7d32; margin-bottom: 20px;"></p>
+        <button type="button" id="af-restart-btn" style="background: #2e7d32; color: white; border: none; padding: 14px 32px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
+          🔄 العودة للقائمة الرئيسية
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var allAfricaCountries = [
+      { code: "ma", name: "المغرب" }, { code: "dz", name: "الجزائر" }, { code: "tn", name: "تونس" },
+      { code: "ly", name: "ليبيا" }, { code: "eg", name: "مصر" }, { code: "mr", name: "موريتانيا" },
+      { code: "sd", name: "السودان" }, { code: "ss", name: "جنوب السودان" }, { code: "sn", name: "السنغال" },
+      { code: "ml", name: "مالي" }, { code: "ne", name: "النيجر" }, { code: "td", name: "تشاد" },
+      { code: "bf", name: "بوركينا فاسو" }, { code: "gn", name: "غينيا" }, { code: "gw", name: "غينيا بيساو" },
+      { code: "gm", name: "غامبيا" }, { code: "cv", name: "الرأس الأخضر" }, { code: "sl", name: "سيراليون" },
+      { code: "lr", name: "ليبيريا" }, { code: "ci", name: "ساحل العاج" }, { code: "gh", name: "غانا" },
+      { code: "tg", name: "توغو" }, { code: "bj", name: "بنين" }, { code: "ng", name: "نيجيريا" },
+      { code: "cm", name: "الكاميرون" }, { code: "cf", name: "إفريقيا الوسطى" }, { code: "gq", name: "غينيا الاستوائية" },
+      { code: "ga", name: "الغابون" }, { code: "cg", name: "الكونغو" }, { code: "cd", name: "الكونغو الديمقراطية" },
+      { code: "st", name: "ساو تومي وبرينسيب" }, { code: "er", name: "إريتريا" }, { code: "et", name: "إثيوبيا" },
+      { code: "dj", name: "جيبوتي" }, { code: "so", name: "الصومال" }, { code: "ke", name: "كينيا" },
+      { code: "ug", name: "أوغندا" }, { code: "rw", name: "رواندا" }, { code: "bi", name: "بوروندي" },
+      { code: "tz", name: "تنزانيا" }, { code: "ao", name: "أنغولا" }, { code: "zm", name: "زامبيا" },
+      { code: "mw", name: "مالاوي" }, { code: "mz", name: "موزمبيق" }, { code: "zw", name: "زيمبابوي" },
+      { code: "bw", name: "بوتسوانا" }, { code: "na", name: "ناميبيا" }, { code: "za", name: "جنوب إفريقيا" },
+      { code: "ls", name: "ليسوتو" }, { code: "sz", name: "إسواتيني" }, { code: "mg", name: "مدغشقر" },
+      { code: "km", name: "جزر القمر" }, { code: "mu", name: "موريشيوس" }, { code: "sc", name: "سيشل" }
+    ];
+
+    var gameList = [];
+    var currentCountry = null;
+    var totalCount = 0;
+    var afIdx = 0;
+    var afScore = 0;
+    var afAnswered = false;
+
+    function shuffleArray(arr) {
+      return arr.slice().sort(function() { return Math.random() - 0.5; });
+    }
+
+    function playTone(isCorrect) {
+      try {
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        var ctx = new AudioCtx();
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        if (isCorrect) {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+          osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.12);
+          osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.24);
+        } else {
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(220, ctx.currentTime);
+          osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
+        }
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.45);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.45);
+      } catch (e) {}
+    }
+
+    function speakArabic(text) {
+      try {
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel();
+          var msg = new SpeechSynthesisUtterance(text);
+          msg.lang = "ar-SA";
+          msg.rate = 0.9;
+          window.speechSynthesis.speak(msg);
+        }
+      } catch (e) {}
+    }
+
+    function startAfricaGame(count) {
+      gameList = shuffleArray(allAfricaCountries).slice(0, count);
+      totalCount = gameList.length;
+      afIdx = 0;
+      afScore = 0;
+      document.getElementById("af-score").innerHTML = "النقاط: 0 ⭐";
+      document.getElementById("af-start-area").style.display = "none";
+      document.getElementById("af-result-area").style.display = "none";
+      document.getElementById("af-quiz-area").style.display = "block";
+      document.getElementById("af-play-wrapper").style.display = "block";
+      speakArabic("هيا نتعرف على دول قارة إفريقيا!");
+      afLoad();
+    }
+
+    document.getElementById("af-start-15").addEventListener("click", function() { startAfricaGame(15); });
+    document.getElementById("af-start-54").addEventListener("click", function() { startAfricaGame(54); });
+    document.getElementById("af-speak-btn").addEventListener("click", function() { speakArabic("ما اسم هذه الدولة الإفريقية؟"); });
+
+    function afLoad() {
+      afAnswered = false;
+      document.getElementById("af-feedback").innerHTML = "";
+      document.getElementById("af-feedback").style.background = "transparent";
+      document.getElementById("af-next-btn").style.display = "none";
+
+      currentCountry = gameList.pop();
+      afIdx++;
+      document.getElementById("af-progress").innerHTML = "السؤال: " + afIdx + " / " + totalCount;
+      document.getElementById("af-flag-img").src = "https://flagcdn.com" + currentCountry.code + ".png";
+      document.getElementById("af-map-img").src = "https://githubusercontent.com" + currentCountry.code + "/256.png";
+
