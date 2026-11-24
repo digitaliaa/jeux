@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -77,28 +77,14 @@
   </div>
 
   <script>
-    var allAfricaCountries = [
-      { code: "ma", name: "المغرب" }, { code: "dz", name: "الجزائر" }, { code: "tn", name: "تونس" },
-      { code: "ly", name: "ليبيا" }, { code: "eg", name: "مصر" }, { code: "mr", name: "موريتانيا" },
-      { code: "sd", name: "السودان" }, { code: "ss", name: "جنوب السودان" }, { code: "sn", name: "السنغال" },
-      { code: "ml", name: "مالي" }, { code: "ne", name: "النيجر" }, { code: "td", name: "تشاد" },
-      { code: "bf", name: "بوركينا فاسو" }, { code: "gn", name: "غينيا" }, { code: "gw", name: "غينيا بيساو" },
-      { code: "gm", name: "غامبيا" }, { code: "cv", name: "الرأس الأخضر" }, { code: "sl", name: "سيراليون" },
-      { code: "lr", name: "ليبيريا" }, { code: "ci", name: "ساحل العاج" }, { code: "gh", name: "غانا" },
-      { code: "tg", name: "توغو" }, { code: "bj", name: "بنين" }, { code: "ng", name: "نيجيريا" },
-      { code: "cm", name: "الكاميرون" }, { code: "cf", name: "إفريقيا الوسطى" }, { code: "gq", name: "غينيا الاستوائية" },
-      { code: "ga", name: "الغابون" }, { code: "cg", name: "الكونغو" }, { code: "cd", name: "الكونغو الديمقراطية" },
-      { code: "st", name: "ساو تومي وبرينسيب" }, { code: "er", name: "إريتريا" }, { code: "et", name: "إثيوبيا" },
-      { code: "dj", name: "جيبوتي" }, { code: "so", name: "الصومال" }, { code: "ke", name: "كينيا" },
-      { code: "ug", name: "أوغندا" }, { code: "rw", name: "رواندا" }, { code: "bi", name: "بوروندي" },
-      { code: "tz", name: "تنزانيا" }, { code: "ao", name: "أنغولا" }, { code: "zm", name: "زامبيا" },
-      { code: "mw", name: "مالاوي" }, { code: "mz", name: "موزمبيق" }, { code: "zw", name: "زيمبابوي" },
-      { code: "bw", name: "بوتسوانا" }, { code: "na", name: "ناميبيا" }, { code: "za", name: "جنوب إفريقيا" },
-      { code: "ls", name: "ليسوتو" }, { code: "sz", name: "إسواتيني" }, { code: "mg", name: "مدغشقر" },
-      { code: "km", name: "جزر القمر" }, { code: "mu", name: "موريشيوس" }, { code: "sc", name: "سيشل" }
-    ];
+    var rawData = "ma:المغرب|dz:الجزائر|tn:تونس|ly:ليبيا|eg:مصر|mr:موريتانيا|sd:السودان|ss:جنوب السودان|sn:السنغال|ml:مالي|ne:النيجر|td:تشاد|bf:بوركينا فاسو|gn:غينيا|gw:غينيا بيساو|gm:غامبيا|cv:الرأس الأخضر|sl:سيراليون|lr:ليبيريا|ci:ساحل العاج|gh:غانا|tg:توغو|bj:بنين|ng:نيجيريا|cm:الكاميرون|cf:إفريقيا الوسطى|gq:غينيا الاستوائية|ga:الغابون|cg:الكونغو|cd:الكونغو الديمقراطية|st:ساو تومي وبرينسيب|er:إريتريا|et:إثيوبيا|dj:جيبوتي|so:الصومال|ke:كينيا|ug:أوغندا|rw:رواندا|bi:بوروندي|tz:تنزانيا|ao:أنغولا|zm:زامبيا|mw:مالاوي|mz:موزمبيق|zw:زيمبابوي|bw:بوتسوانا|na:ناميبيا|za:جنوب إفريقيا|ls:ليسوتو|sz:إسواتيني|mg:مدغشقر|km:جزر القمر|mu:موريشيوس|sc:سيشل";
 
-    var gameList = [];
+    var allAfricaCountries = rawData.split("|").map(function(item) {
+      var parts = item.split(":");
+      return { code: parts.shift(), name: parts.shift() };
+    });
+
+    var gameList = new Array();
     var currentCountry = null;
     var totalCount = 0;
     var afIdx = 0;
@@ -177,3 +163,30 @@
       var flagUrl = "https://" + "flagcdn.com" + "/w320/" + currentCountry.code + ".png";
       var mapUrl = "https://" + "://githubusercontent.com" + "/djaiss/mapsicon/master/all/" + currentCountry.code + "/256.png";
       document.getElementById("af-flag-img").src = flagUrl;
+      document.getElementById("af-map-img").src = mapUrl;
+
+      var others = shuffleArray(allAfricaCountries.filter(function(c) { return c.code !== currentCountry.code; }));
+      var wrong1 = others.pop();
+      var wrong2 = others.pop();
+      var options = shuffleArray(new Array(currentCountry, wrong1, wrong2));
+
+      var optBox = document.getElementById("af-options");
+      optBox.innerHTML = "";
+
+      options.forEach(function(optObj) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.innerHTML = "🔊 " + optObj.name;
+        btn.dataset.code = optObj.code;
+        btn.style.cssText = "background:#ffffff; border:2px solid #ffb74d; border-radius:15px; padding:13px 18px; font-size:19px; font-weight:bold; color:#bf360c; cursor:pointer;";
+        btn.addEventListener("click", function() {
+          speakArabic(optObj.name);
+          afCheck(optObj.code === currentCountry.code, btn, currentCountry);
+        });
+        optBox.appendChild(btn);
+      });
+    }
+
+    function afCheck(isCorrect, btn, cur) {
+      if (afAnswered) return;
+      afAnswered = true;
