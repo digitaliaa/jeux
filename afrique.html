@@ -120,17 +120,25 @@
       } catch (e) {}
     }
 
-    function speakArabic(text) {
+        function speakArabic(text) {
       try {
-        if ("speechSynthesis" in window) {
+        var voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+        var arVoice = voices.find(function(v) { return v.lang && v.lang.indexOf("ar") === 0; });
+        if (arVoice) {
           window.speechSynthesis.cancel();
           var msg = new SpeechSynthesisUtterance(text);
-          msg.lang = "ar-SA";
+          msg.voice = arVoice;
+          msg.lang = arVoice.lang;
           msg.rate = 0.9;
           window.speechSynthesis.speak(msg);
+        } else {
+          var audioUrl = "https://" + "://google.com" + "/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=" + encodeURIComponent(text);
+          var player = new Audio(audioUrl);
+          player.play();
         }
       } catch (e) {}
     }
+
 
     function startAfricaGame(count) {
       gameList = shuffleArray(allAfricaCountries).slice(0, count);
