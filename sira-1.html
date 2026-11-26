@@ -221,3 +221,23 @@
 
       var next = document.getElementById("sr1-next-btn");
       next.style.display = "inline-block";
+next.innerHTML = (sr1Idx === story1List.length - 1) ? "عرض النتيجة النهائية 🏆" : "الفصل التالي ⬅️";
+}
+document.getElementById("sr1-next-btn").addEventListener("click", function() {
+sr1Idx++;
+if (sr1Idx < story1List.length) {
+sr1ShowStory();
+} else {
+document.getElementById("sr1-quiz-area").style.display = "none";
+document.getElementById("sr1-result-area").style.display = "block";
+document.getElementById("sr1-final-score").innerHTML = "لقد حصلت على " + sr1Score + " من " + story1List.length + " نجوم! ⭐";
+playTone("win");
+speakArabic("بارك الله فيك! لقد حصلت على " + sr1Score + " من " + story1List.length + " نجوم");
+}
+});
+document.getElementById("sr1-restart-btn").addEventListener("click", function() {
+sr1Idx = 0; sr1Score = 0;
+document.getElementById("sr1-score").innerHTML = "النقاط: 0 ⭐";
+document.getElementById("sr1-result-area").style.display = "none";
+sr1ShowStory();
+});
