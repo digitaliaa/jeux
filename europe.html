@@ -1,81 +1,3 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أعلام وخرائط دول قارة أوروبا (44 دولة)</title>
-</head>
-<body style="margin:0; padding:10px; background:transparent; font-family: Tahoma, sans-serif;">
-
-  <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 3px solid #1565c0; border-radius: 20px; padding: 20px; text-align: center; max-width: 760px; margin: 0 auto;">
-    
-    <div style="background: #1565c0; color: white; padding: 12px 20px; border-radius: 15px; margin-bottom: 15px;">
-      <h2 style="margin: 0; font-size: 22px; color: #fff;">🌍 مستكشف القارات: جميع دول أوروبا (44 دولة)</h2>
-      <p style="margin: 5px 0 0; font-size: 14px; color: #e3f2fd;">شاهد العلم والخريطة، واستمع للنطق الصحيح!</p>
-    </div>
-
-    <div id="eu-start-area" style="padding: 20px 10px;">
-      <div style="font-size: 65px; margin-bottom: 12px;">🏰🗺️🚩</div>
-      <p style="font-size: 18px; color: #0d47a1; font-weight: bold; margin-bottom: 18px;">تضم قارة أوروبا 44 دولة! اختر التحدي المناسب لك:</p>
-      
-      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto;">
-        <button type="button" id="eu-start-15" style="background: #1976d2; color: white; border: none; padding: 14px 25px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer;">
-          🚀 جولة سريعة (15 دولة عشوائية)
-        </button>
-        <button type="button" id="eu-start-44" style="background: #283593; color: white; border: none; padding: 14px 25px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer;">
-          🏆 التحدي الشامل (كل الـ 44 دولة)
-        </button>
-      </div>
-    </div>
-
-    <div id="eu-play-wrapper" style="display: none;">
-      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 10px 15px; border-radius: 12px; margin-bottom: 18px; font-weight: bold; border: 2px solid #64b5f6;">
-        <span id="eu-progress" style="color: #0d47a1;">السؤال: 1 / 15</span>
-        <span id="eu-score" style="color: #2e7d32;">النقاط: 0 ⭐</span>
-      </div>
-
-      <div id="eu-quiz-area">
-        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 14px;">
-          
-          <div style="background: #ffffff; padding: 8px; border-radius: 14px; border: 2px solid #90caf9; width: 170px;">
-            <div style="font-size: 12px; font-weight: bold; color: #1565c0; margin-bottom: 5px;">🚩 علم الدولة</div>
-            <img id="eu-flag-img" src="" alt="علم الدولة" style="width: 155px; height: 105px; object-fit: cover; border-radius: 8px; border: 1px solid #eee;">
-          </div>
-
-          <div style="background: #ffffff; padding: 8px; border-radius: 14px; border: 2px solid #81c784; width: 170px;">
-            <div style="font-size: 12px; font-weight: bold; color: #2e7d32; margin-bottom: 5px;">🗺️ خريطة الدولة</div>
-            <img id="eu-map-img" src="" alt="خريطة الدولة" style="width: 105px; height: 105px; object-fit: contain;">
-          </div>
-
-        </div>
-
-        <button type="button" id="eu-speak-btn" style="background: #00838f; color: white; border: none; padding: 9px 22px; font-size: 16px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-bottom: 10px;">
-          🔊 استمع للسؤال
-        </button>
-
-        <h3 style="font-size: 20px; color: #0d47a1; margin: 5px 0 16px;">ما اسم هذه الدولة الأوروبية؟</h3>
-        
-        <div id="eu-options" style="display: grid; grid-template-columns: 1fr; gap: 11px; max-width: 500px; margin: 0 auto;"></div>
-        
-        <div id="eu-feedback" style="margin-top: 15px; font-size: 17px; font-weight: bold; padding: 8px; border-radius: 10px;"></div>
-        
-        <button type="button" id="eu-next-btn" style="display: none; margin: 14px auto 0; background: #1565c0; color: white; border: none; padding: 12px 30px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
-          الدولة التالية ⬅️
-        </button>
-      </div>
-
-      <div id="eu-result-area" style="display: none; padding: 20px;">
-        <div style="font-size: 65px; margin-bottom: 10px;">🏆</div>
-        <h3 style="font-size: 24px; color: #0d47a1;">أحسنت يا مستكشف أوروبا!</h3>
-        <p id="eu-final-score" style="font-size: 20px; font-weight: bold; color: #2e7d32; margin-bottom: 20px;"></p>
-        <button type="button" id="eu-restart-btn" style="background: #1976d2; color: white; border: none; padding: 14px 32px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
-          🔄 العودة للقائمة الرئيسية
-        </button>
-      </div>
-    </div>
-
-  </div>
-
   <script>
     var rawEurope = "fr:فرنسا|es:إسبانيا|pt:البرتغال|it:إيطاليا|de:ألمانيا|gb:المملكة المتحدة|ie:أيرلندا|nl:هولندا|be:بلجيكا|lu:لوكسمبورغ|ch:سويسرا|at:النمسا|pl:بولندا|cz:التشيك|sk:سلوفاكيا|hu:المجر|ro:رومانيا|bg:بلغاريا|gr:اليونان|se:السويد|no:النرويج|fi:فنلندا|dk:الدنمارك|is:آيسلندا|ee:إستونيا|lv:لاتفيا|lt:ليتوانيا|ua:أوكرانيا|by:بيلاروسيا|md:مولدوفا|hr:كرواتيا|si:سلوفينيا|ba:البوسنة والهرسك|rs:صربيا|me:الجبل الأسود|mk:مقدونيا الشمالية|al:ألبانيا|ru:روسيا|mt:مالطا|cy:قبرص|ad:أندورا|mc:موناكو|sm:سان مارينو|li:ليختنشتاين";
 
@@ -203,3 +125,84 @@
       
       var flagUrl = "https://" + "flagcdn.com" + "/w320/" + currentCountry.code + ".png";
       var mapUrl = "https://" + "raw." + "githubusercontent.com" + "/djaiss/mapsicon/master/all/" + currentCountry.code + "/256.png";
+      document.getElementById("eu-flag-img").src = flagUrl;
+      document.getElementById("eu-map-img").src = mapUrl;
+
+      var others = shuffleArray(allEuropeCountries.filter(function(c) { return c.code !== currentCountry.code; }));
+      var wrong1 = others.pop();
+      var wrong2 = others.pop();
+      var options = shuffleArray(new Array(currentCountry, wrong1, wrong2));
+
+      var optBox = document.getElementById("eu-options");
+      optBox.innerHTML = "";
+
+      options.forEach(function(optObj) {
+        var btn = document.createElement("button");
+        btn.type = "button";
+        btn.innerHTML = "🔊 " + optObj.name;
+        btn.dataset.code = optObj.code;
+        btn.style.cssText = "background:#ffffff; border:2px solid #64b5f6; border-radius:15px; padding:13px 18px; font-size:19px; font-weight:bold; color:#0d47a1; cursor:pointer;";
+        btn.addEventListener("click", function() {
+          speakArabic(optObj.name);
+          euCheck(optObj.code === currentCountry.code, btn, currentCountry);
+        });
+        optBox.appendChild(btn);
+      });
+    }
+
+    function euCheck(isCorrect, btn, cur) {
+      if (euAnswered) return;
+      euAnswered = true;
+      var btns = document.getElementById("eu-options").querySelectorAll("button");
+      var fb = document.getElementById("eu-feedback");
+
+      if (isCorrect) {
+        euScore++;
+        playTone("win");
+        document.getElementById("eu-score").innerHTML = "النقاط: " + euScore + " ⭐";
+        btn.style.background = "#c8e6c9";
+        btn.style.borderColor = "#2e7d32";
+        fb.innerHTML = "🎉 ممتاز! هذه دولة " + cur.name;
+        fb.style.background = "#e8f5e9";
+        fb.style.color = "#1b5e20";
+        setTimeout(function() { speakArabic("ممتاز! هذه دولة " + cur.name); }, 600);
+      } else {
+        playTone("lose");
+        btn.style.background = "#ffcdd2";
+        btn.style.borderColor = "#c62828";
+        btns.forEach(function(b) {
+          if (b.dataset.code === cur.code) {
+            b.style.background = "#c8e6c9";
+            b.style.borderColor = "#2e7d32";
+          }
+        });
+        fb.innerHTML = "❌ إجابة خاطئة! الإجابة الصحيحة هي: " + cur.name;
+        fb.style.background = "#ffebee";
+        fb.style.color = "#c62828";
+        setTimeout(function() { speakArabic("الإجابة الصحيحة هي " + cur.name); }, 600);
+      }
+
+      var next = document.getElementById("eu-next-btn");
+      next.style.display = "inline-block";
+      next.innerHTML = (gameList.length === 0) ? "عرض النتيجة النهائية 🏆" : "الدولة التالية ⬅️";
+    }
+
+    document.getElementById("eu-next-btn").addEventListener("click", function() {
+      if (gameList.length > 0) {
+        euLoad();
+      } else {
+        document.getElementById("eu-quiz-area").style.display = "none";
+        document.getElementById("eu-result-area").style.display = "block";
+        document.getElementById("eu-final-score").innerHTML = "لقد حصلت على " + euScore + " من " + totalCount + " نجوم! ⭐";
+        playTone("win");
+        speakArabic("أحسنت يا بطل! لقد حصلت على " + euScore + " من " + totalCount + " نجوم");
+      }
+    });
+
+    document.getElementById("eu-restart-btn").addEventListener("click", function() {
+      document.getElementById("eu-play-wrapper").style.display = "none";
+      document.getElementById("eu-start-area").style.display = "block";
+    });
+  </script>
+</body>
+</html>
