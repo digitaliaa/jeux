@@ -6,7 +6,6 @@
   <title>السيرة النبوية المصورة (1): العالم والعرب قبل البعثة</title>
 </head>
 <body style="margin:0; padding:10px; background:transparent; font-family: Tahoma, sans-serif;">
-
   <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); border: 3px solid #6a1b9a; border-radius: 22px; padding: 18px; text-align: center; max-width: 760px; margin: 0 auto;">
     <div style="background: #6a1b9a; color: white; padding: 12px 18px; border-radius: 15px; margin-bottom: 14px;">
       <h2 style="margin: 0; font-size: 21px; color: #fff;">🕌 السيرة النبوية المصورة (1): العالم والعرب قبل البعثة</h2>
@@ -14,7 +13,7 @@
     </div>
 
     <div id="sr1-start-area" style="padding: 15px 10px;">
-      <div id="sr1-cover-art" style="max-width: 300px; margin: 0 auto 14px; border-radius: 16px; overflow: hidden; border: 3px solid #ba68c8; background: #fff;"></div>
+      <div id="sr1-cover-art" style="max-width: 300px; height: 145px; margin: 0 auto 14px; border-radius: 16px; overflow: hidden; border: 3px solid #ba68c8; background: #fff;"></div>
       <p style="font-size: 18px; color: #4a148c; font-weight: bold; margin-bottom: 16px;">اختبر معلوماتك بالصوت والصورة حول أحوال العالم والعرب قبل البعثة!</p>
       <button type="button" id="sr1-start-btn" style="background: #ff8f00; color: white; border: none; padding: 15px 36px; font-size: 20px; font-weight: bold; border-radius: 30px; cursor: pointer;">🚀 ابدأ اللعبة الآن</button>
     </div>
@@ -24,7 +23,6 @@
         <span id="sr1-progress" style="color: #4a148c;">السؤال: 1 / 10</span>
         <span id="sr1-score" style="color: #2e7d32;">النقاط: 0 ⭐</span>
       </div>
-
       <div id="sr1-quiz-area">
         <div id="sr1-scene-box" style="max-width: 310px; height: 145px; margin: 0 auto 10px; border-radius: 16px; overflow: hidden; border: 3px solid #ffffff; background: #ffffff;"></div>
         <button type="button" id="sr1-speak-btn" style="background: #0277bd; color: white; border: none; padding: 8px 20px; font-size: 15px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-bottom: 8px;">🔊 أعد سماع السؤال</button>
@@ -33,7 +31,6 @@
         <div id="sr1-feedback" style="margin-top: 12px; font-size: 16px; font-weight: bold; padding: 9px; border-radius: 10px; line-height: 1.5;"></div>
         <button type="button" id="sr1-next-btn" style="display: none; margin: 12px auto 0; background: #6a1b9a; color: white; border: none; padding: 12px 30px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">السؤال التالي ⬅️</button>
       </div>
-
       <div id="sr1-result-area" style="display: none; padding: 20px;">
         <div style="font-size: 65px; margin-bottom: 10px;">🏆</div>
         <h3 style="font-size: 24px; color: #4a148c;">بارك الله فيك يا بطل السيرة!</h3>
@@ -42,180 +39,72 @@
       </div>
     </div>
   </div>
-
   <script>
-    var rawSira1 = "empires|ما هما الإمبراطوريتان الكبيرتان اللتان كانتا تحكمان العالم قبل البعثة النبوية؟|👑 الروم والفرس|🏮 الصين واليابان|🏰 الأندلس والمغرب|0|أحسنت! الروم والفرس هما الإمبراطوريتان الكبيرتان آنذاك." +
-    "||empires|ما عاصمة الإمبراطورية الرومانية الشرقية (البيزنطية)؟|🏛️ القسطنطينية|🕋 مكة المكرمة|🌴 بغداد|0|ممتاز! كانت القسطنطينية عاصمة الدولة البيزنطية." +
-    "||makkah|إلى أي قبيلة عربية شريفة ينتسب سيدنا محمد ﷺ؟|🕋 قريش (من بني هاشم)|🌴 ثقيف|🛡️ الأوس|0|رائع! اصطفى الله قريشاً وبني هاشم لنبيه الكريم ﷺ." +
-    "||caravan|بماذا اشتهرت حضارة سبأ في اليمن قديماً؟|🌊 ببناء السدود العظيمة مثل سد مأرب|🔺 ببناء الأهرامات|🚢 بصناعة السفن الحديدية|0|أحسنت! اشتهر أهل سبأ ببناء السدود وتخزين المياه." +
-    "||caravan|ما هما الرحلتان التجاريتان المشهورتان لقريش في القرآن الكريم؟|🐪 رحلة الشتاء إلى اليمن ورحلة الصيف إلى الشام|⛵ رحلة إلى الهند ورحلة إلى الصين|🐎 رحلة إلى مصر ورحلة إلى المغرب|0|بارك الله فيك! رحلة الشتاء إلى اليمن ورحلة الصيف إلى الشام." +
-    "||caravan|ما اسم السوق الشهير الذي كان العرب يجتمعون فيه للتجارة والشعر؟|📜 سوق عكاظ|🕌 سوق القيروان|🏛️ سوق دمشق|0|صحيح! سوق عكاظ كان أشهر أسواق العرب." +
-    "||makkah|ما اسم الحلف الذي عقدته قبائل مكة لنصرة المظلوم؟|🤝 حلف الفضول|🕊️ حلف الحديبية|⚔️ حلف اليرموك|0|أحسنت! حلف الفضول لنصرة المظلومين." +
-    "||zamzam|من هو جد النبي ﷺ الذي رأى في المنام أمراً بحفر بئر زمزم؟|💧 عبد المطلب بن هاشم|🧔 أبو طالب|🦁 حمزة بن عبد المطلب|0|ممتاز! عبد المطلب بن هاشم جد النبي ﷺ." +
-    "||elephant|من هو الحاكم الحبشي الذي حاول هدم الكعبة بجيش الفيل؟|🐘 أبرهة الحبشي|👑 النجاشي|🏛️ كسرى|0|صحيح! أبرهة الحبشي هو الذي قاد جيش الفيل." +
-    "||elephant|كيف حمى الله الكعبة المشرفة من جيش أبرهة في عام الفيل؟|🕊️ أرسل عليهم طيراً أبابيل ترميهم بحجارة من سجيل|🌊 أرسل عليهم فيضاناً|❄️ أرسل عليهم ثلوجاً|0|بارك الله فيك! حفظ الله بيته الحرام وأهلك المعتدين.";
-        function getScene1Svg(type) {
-      if (type === "empires") {
-        return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#ede7f6"/><rect x="45" y="52" width="90" height="73" fill="#7e57c2"/><polygon points="40,52 90,22 140,52" fill="#5e35b1"/><rect x="185" y="52" width="90" height="73" fill="#ec407a"/><polygon points="180,52 230,22 280,52" fill="#d81b60"/><rect y="125" width="320" height="20" fill="#b39ddb"/></svg>';
-      } else if (type === "caravan") {
-        return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#fff3e0"/><circle cx="265" cy="34" r="19" fill="#ffb300"/><path d="M0,112 Q160,90 320,112 L320,145 L0,145 Z" fill="#ffcc80"/><ellipse cx="115" cy="97" rx="22" ry="12" fill="#8d6e63"/><circle cx="138" cy="85" r="7" fill="#8d6e63"/><rect x="103" y="105" width="4" height="16" fill="#6d4c41"/><rect x="123" y="105" width="4" height="16" fill="#6d4c41"/><ellipse cx="195" cy="100" rx="20" ry="11" fill="#a1887f"/><circle cx="216" cy="89" r="6" fill="#a1887f"/><rect x="185" y="107" width="4" height="15" fill="#6d4c41"/><rect x="203" y="107" width="4" height="15" fill="#6d4c41"/></svg>';
-      } else if (type === "zamzam") {
-        return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#e1f5fe"/><rect y="114" width="320" height="31" fill="#ffe082"/><rect x="115" y="72" width="90" height="44" rx="6" fill="#8d6e63"/><ellipse cx="160" cy="72" rx="45" ry="12" fill="#29b6f6"/><path d="M160,69 Q145,40 130,52" stroke="#0288d1" stroke-width="5" fill="none"/><path d="M160,69 Q175,40 190,52" stroke="#0288d1" stroke-width="5" fill="none"/><circle cx="160" cy="38" r="6" fill="#29b6f6"/></svg>';
-      } else if (type === "elephant") {
-        return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#fce4ec"/><rect y="118" width="320" height="27" fill="#ffcc80"/><ellipse cx="165" cy="88" rx="38" ry="25" fill="#78909c"/><circle cx="125" cy="82" r="18" fill="#78909c"/><path d="M110,86 Q95,101 108,111" stroke="#78909c" stroke-width="8" fill="none"/><rect x="145" y="108" width="10" height="16" fill="#546e7a"/><rect x="178" y="108" width="10" height="16" fill="#546e7a"/><path d="M80,28 Q90,20 100,28" stroke="#37474f" stroke-width="3" fill="none"/><path d="M150,23 Q160,15 170,23" stroke="#37474f" stroke-width="3" fill="none"/><path d="M220,30 Q230,22 240,30" stroke="#37474f" stroke-width="3" fill="none"/></svg>';
-      } else {
-        return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#81d4fa"/><circle cx="270" cy="30" r="18" fill="#ffeb3b"/><polygon points="0,126 75,62 155,126" fill="#a1887f"/><polygon points="165,126 245,58 320,126" fill="#8d6e63"/><rect y="116" width="320" height="29" fill="#ffe082"/><rect x="130" y="65" width="60" height="54" rx="4" fill="#212121"/><rect x="130" y="77" width="60" height="7" fill="#ffd54f"/><rect x="153" y="93" width="14" height="26" fill="#ffb300"/></svg>';
-      }
+    var rawSira1 = "empires|ما هما الإمبراطوريتان الكبيرتان اللتان كانتا تحكمان العالم قبل البعثة النبوية؟|👑 الروم والفرس|🏮 الصين واليابان|🏰 الأندلس والمغرب|0|أحسنت! الروم والفرس هما الإمبراطوريتان الكبيرتان آنذاك.||empires|ما عاصمة الإمبراطورية الرومانية الشرقية (البيزنطية)؟|🏛️ القسطنطينية|🕋 مكة المكرمة|🌴 بغداد|0|ممتاز! كانت القسطنطينية عاصمة الدولة البيزنطية.||makkah|إلى أي قبيلة عربية شريفة ينتسب سيدنا محمد ﷺ؟|🕋 قريش (من بني هاشم)|🌴 ثقيف|🛡️ الأوس|0|رائع! اصطفى الله قريشاً وبني هاشم لنبيه الكريم ﷺ.||caravan|بماذا اشتهرت حضارة سبأ في اليمن قديماً؟|🌊 ببناء السدود العظيمة مثل سد مأرب|🔺 ببناء الأهرامات|🚢 بصناعة السفن الحديدية|0|أحسنت! اشتهر أهل سبأ ببناء السدود وتخزين المياه.||caravan|ما هما الرحلتان التجاريتان المشهورتان لقريش في القرآن الكريم؟|🐪 رحلة الشتاء إلى اليمن ورحلة الصيف إلى الشام|⛵ رحلة إلى الهند ورحلة إلى الصين|🐎 رحلة إلى مصر ورحلة إلى المغرب|0|بارك الله فيك! رحلة الشتاء إلى اليمن ورحلة الصيف إلى الشام.||caravan|ما اسم السوق الشهير الذي كان العرب يجتمعون فيه للتجارة والشعر؟|📜 سوق عكاظ|🕌 سوق القيروان|🏛️ سوق دمشق|0|صحيح! سوق عكاظ كان أشهر أسواق العرب.||makkah|ما اسم الحلف الذي عقدته قبائل مكة لنصرة المظلوم؟|🤝 حلف الفضول|🕊️ حلف الحديبية|⚔️ حلف اليرموك|0|أحسنت! حلف الفضول لنصرة المظلومين.||zamzam|من هو جد النبي ﷺ الذي رأى في المنام أمراً بحفر بئر زمزم؟|💧 عبد المطلب بن هاشم|🧔 أبو طالب|🦁 حمزة بن عبد المطلب|0|ممتاز! عبد المطلب بن هاشم جد النبي ﷺ.||elephant|من هو الحاكم الحبشي الذي حاول هدم الكعبة بجيش الفيل؟|🐘 أبرهة الحبشي|👑 النجاشي|🏛️ كسرى|0|صحيح! أبرهة الحبشي هو الذي قاد جيش الفيل.||elephant|كيف حمى الله الكعبة المشرفة من جيش أبرهة في عام الفيل؟|🕊️ أرسل عليهم طيراً أبابيل ترميهم بحجارة من سجيل|🌊 أرسل عليهم فيضاناً|❄️ أرسل عليهم ثلوجاً|0|بارك الله فيك! حفظ الله بيته الحرام وأهلك المعتدين.";
+    function getScene1Svg(t) {
+      if (t === "empires") return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#ede7f6"/><rect x="45" y="52" width="90" height="73" fill="#7e57c2"/><polygon points="40,52 90,22 140,52" fill="#5e35b1"/><rect x="185" y="52" width="90" height="73" fill="#ec407a"/><polygon points="180,52 230,22 280,52" fill="#d81b60"/><rect y="125" width="320" height="20" fill="#b39ddb"/></svg>';
+      if (t === "caravan") return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#fff3e0"/><circle cx="265" cy="34" r="19" fill="#ffb300"/><path d="M0,112 Q160,90 320,112 L320,145 L0,145 Z" fill="#ffcc80"/><ellipse cx="115" cy="97" rx="22" ry="12" fill="#8d6e63"/><circle cx="138" cy="85" r="7" fill="#8d6e63"/><rect x="103" y="105" width="4" height="16" fill="#6d4c41"/><rect x="123" y="105" width="4" height="16" fill="#6d4c41"/><ellipse cx="195" cy="100" rx="20" ry="11" fill="#a1887f"/><circle cx="216" cy="89" r="6" fill="#a1887f"/><rect x="185" y="107" width="4" height="15" fill="#6d4c41"/><rect x="203" y="107" width="4" height="15" fill="#6d4c41"/></svg>';
+      if (t === "zamzam") return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#e1f5fe"/><rect y="114" width="320" height="31" fill="#ffe082"/><rect x="115" y="72" width="90" height="44" rx="6" fill="#8d6e63"/><ellipse cx="160" cy="72" rx="45" ry="12" fill="#29b6f6"/><path d="M160,69 Q145,40 130,52" stroke="#0288d1" stroke-width="5" fill="none"/><path d="M160,69 Q175,40 190,52" stroke="#0288d1" stroke-width="5" fill="none"/><circle cx="160" cy="38" r="6" fill="#29b6f6"/></svg>';
+      if (t === "elephant") return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#fce4ec"/><rect y="118" width="320" height="27" fill="#ffcc80"/><ellipse cx="165" cy="88" rx="38" ry="25" fill="#78909c"/><circle cx="125" cy="82" r="18" fill="#78909c"/><path d="M110,86 Q95,101 108,111" stroke="#78909c" stroke-width="8" fill="none"/><rect x="145" y="108" width="10" height="16" fill="#546e7a"/><rect x="178" y="108" width="10" height="16" fill="#546e7a"/><path d="M80,28 Q90,20 100,28" stroke="#37474f" stroke-width="3" fill="none"/><path d="M150,23 Q160,15 170,23" stroke="#37474f" stroke-width="3" fill="none"/><path d="M220,30 Q230,22 240,30" stroke="#37474f" stroke-width="3" fill="none"/></svg>';
+      return '<svg viewBox="0 0 320 145" width="100%" height="100%"><rect width="320" height="145" fill="#81d4fa"/><circle cx="270" cy="30" r="18" fill="#ffeb3b"/><polygon points="0,126 75,62 155,126" fill="#a1887f"/><polygon points="165,126 245,58 320,126" fill="#8d6e63"/><rect y="116" width="320" height="29" fill="#ffe082"/><rect x="130" y="65" width="60" height="54" rx="4" fill="#212121"/><rect x="130" y="77" width="60" height="7" fill="#ffd54f"/><rect x="153" y="93" width="14" height="26" fill="#ffb300"/></svg>';
     }
-
     document.getElementById("sr1-cover-art").innerHTML = getScene1Svg("makkah");
-
-    var sira1List = rawSira1.split("||").map(function(row) {
-      var p = row.split("|");
-      return { scene: p.shift(), q: p.shift(), o0: p.shift(), o1: p.shift(), o2: p.shift(), ans: parseInt(p.shift(), 10), hint: p.shift() };
-    });
-
+    var sira1List = rawSira1.split("||").map(function(row) { var p = row.split("|"); return { scene: p.shift(), q: p.shift(), o0: p.shift(), o1: p.shift(), o2: p.shift(), ans: parseInt(p.shift(), 10), hint: p.shift() }; });
     var sr1Idx = 0, sr1Score = 0, sr1Answered = false, sharedAudioCtx = null;
-
-    function getAudioCtx() {
-      if (!sharedAudioCtx) { var AudioCtx = window.AudioContext || window.webkitAudioContext; if (AudioCtx) sharedAudioCtx = new AudioCtx(); }
-      if (sharedAudioCtx && sharedAudioCtx.state === "suspended") { sharedAudioCtx.resume(); }
-      return sharedAudioCtx;
-    }
-
+    function getAudioCtx() { if (!sharedAudioCtx) { var A = window.AudioContext || window.webkitAudioContext; if (A) sharedAudioCtx = new A(); } if (sharedAudioCtx && sharedAudioCtx.state === "suspended") sharedAudioCtx.resume(); return sharedAudioCtx; }
     function playTone(type) {
       try {
-        var ctx = getAudioCtx(); if (!ctx) return;
-        var osc = ctx.createOscillator(), gain = ctx.createGain();
+        var ctx = getAudioCtx(); if (!ctx) return; var osc = ctx.createOscillator(), gain = ctx.createGain(), now = ctx.currentTime;
         osc.connect(gain); gain.connect(ctx.destination);
-        var now = ctx.currentTime;
-        if (type === "win") {
-          osc.type = "sine"; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); osc.frequency.setValueAtTime(783.99, now + 0.2); osc.frequency.setValueAtTime(1046.50, now + 0.3);
-          gain.gain.setValueAtTime(0.25, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55); osc.start(now); osc.stop(now + 0.55);
-        } else if (type === "lose") {
-          osc.type = "triangle"; osc.frequency.setValueAtTime(240, now); osc.frequency.setValueAtTime(175, now + 0.18);
-          gain.gain.setValueAtTime(0.25, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45); osc.start(now); osc.stop(now + 0.45);
-        } else {
-          osc.type = "sine"; osc.frequency.setValueAtTime(440, now);
-          gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15); osc.start(now); osc.stop(now + 0.15);
-        }
+        if (type === "win") { osc.type = "sine"; osc.frequency.setValueAtTime(523.25, now); osc.frequency.setValueAtTime(659.25, now + 0.1); osc.frequency.setValueAtTime(783.99, now + 0.2); osc.frequency.setValueAtTime(1046.50, now + 0.3); gain.gain.setValueAtTime(0.25, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55); osc.start(now); osc.stop(now + 0.55); }
+        else if (type === "lose") { osc.type = "triangle"; osc.frequency.setValueAtTime(240, now); osc.frequency.setValueAtTime(175, now + 0.18); gain.gain.setValueAtTime(0.25, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45); osc.start(now); osc.stop(now + 0.45); }
+        else { osc.type = "sine"; osc.frequency.setValueAtTime(440, now); gain.gain.setValueAtTime(0.15, now); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15); osc.start(now); osc.stop(now + 0.15); }
       } catch (e) {}
     }
-
     if ("speechSynthesis" in window) { window.speechSynthesis.getVoices(); window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); }; }
-
     function speakArabic(text) {
       playTone("click");
-      try {
-        if ("speechSynthesis" in window) {
-          window.speechSynthesis.cancel();
-          var msg = new SpeechSynthesisUtterance(text);
-          var voices = window.speechSynthesis.getVoices();
-          var arVoice = voices.find(function(v) { return v.lang && v.lang.toLowerCase().indexOf("ar") !== -1; });
-          if (arVoice) { msg.voice = arVoice; msg.lang = arVoice.lang; } else { msg.lang = "ar"; }
-          msg.rate = 0.88; window.speechSynthesis.speak(msg);
-        }
-      } catch (e) {}
+      try { if ("speechSynthesis" in window) { window.speechSynthesis.cancel(); var msg = new SpeechSynthesisUtterance(text); var v = window.speechSynthesis.getVoices().find(function(x) { return x.lang && x.lang.toLowerCase().indexOf("ar") !== -1; }); if (v) { msg.voice = v; msg.lang = v.lang; } else { msg.lang = "ar"; } msg.rate = 0.88; window.speechSynthesis.speak(msg); } } catch (e) {}
     }
-
-    document.getElementById("sr1-start-btn").addEventListener("click", function() {
-      document.getElementById("sr1-start-area").style.display = "none";
-      document.getElementById("sr1-play-wrapper").style.display = "block";
-      sr1Load();
-    });
-
-    document.getElementById("sr1-speak-btn").addEventListener("click", function() {
-      speakArabic(sira1List.slice(sr1Idx, sr1Idx + 1).pop().q);
-    });
-
+    document.getElementById("sr1-start-btn").addEventListener("click", function() { document.getElementById("sr1-start-area").style.display = "none"; document.getElementById("sr1-play-wrapper").style.display = "block"; sr1Load(); });
+    document.getElementById("sr1-speak-btn").addEventListener("click", function() { speakArabic(sira1List.slice(sr1Idx, sr1Idx + 1).pop().q); });
     function sr1Load() {
-      sr1Answered = false;
-      document.getElementById("sr1-feedback").innerHTML = "";
-      document.getElementById("sr1-feedback").style.background = "transparent";
-      document.getElementById("sr1-next-btn").style.display = "none";
-
+      sr1Answered = false; document.getElementById("sr1-feedback").innerHTML = ""; document.getElementById("sr1-feedback").style.background = "transparent"; document.getElementById("sr1-next-btn").style.display = "none";
       var cur = sira1List.slice(sr1Idx, sr1Idx + 1).pop();
       document.getElementById("sr1-progress").innerHTML = "السؤال: " + (sr1Idx + 1) + " / " + sira1List.length;
       document.getElementById("sr1-scene-box").innerHTML = getScene1Svg(cur.scene);
       document.getElementById("sr1-question").innerHTML = cur.q;
       setTimeout(function() { speakArabic(cur.q); }, 250);
-
-      var opts = new Array(cur.o0, cur.o1, cur.o2);
-      var optBox = document.getElementById("sr1-options");
-      optBox.innerHTML = "";
-
-      opts.forEach(function(optText, idx) {
-        var btn = document.createElement("button");
-        btn.type = "button";
-        btn.innerHTML = "🔊 " + optText;
-        btn.dataset.idx = idx;
+      var optBox = document.getElementById("sr1-options"); optBox.innerHTML = "";
+      new Array(cur.o0, cur.o1, cur.o2).forEach(function(optText, idx) {
+        var btn = document.createElement("button"); btn.type = "button"; btn.innerHTML = "🔊 " + optText; btn.dataset.idx = idx;
         btn.style.cssText = "background:#ffffff; border:2px solid #ba68c8; border-radius:15px; padding:13px 18px; font-size:18px; font-weight:bold; color:#4a148c; cursor:pointer;";
-        btn.addEventListener("click", function() {
-          speakArabic(optText);
-          sr1Check(idx, btn, cur);
-        });
+        btn.addEventListener("click", function() { speakArabic(optText); sr1Check(idx, btn, cur); });
         optBox.appendChild(btn);
       });
     }
-
     function sr1Check(chosenIdx, btn, cur) {
-      if (sr1Answered) return;
-      sr1Answered = true;
-      var btns = document.getElementById("sr1-options").querySelectorAll("button");
-      var fb = document.getElementById("sr1-feedback");
-
+      if (sr1Answered) return; sr1Answered = true;
+      var btns = document.getElementById("sr1-options").querySelectorAll("button"), fb = document.getElementById("sr1-feedback");
       if (chosenIdx === cur.ans) {
-        sr1Score++;
-        playTone("win");
-        document.getElementById("sr1-score").innerHTML = "النقاط: " + sr1Score + " ⭐";
-        btn.style.background = "#c8e6c9";
-        btn.style.borderColor = "#2e7d32";
-        fb.innerHTML = "🎉 " + cur.hint;
-        fb.style.background = "#e8f5e9";
-        fb.style.color = "#1b5e20";
+        sr1Score++; playTone("win"); document.getElementById("sr1-score").innerHTML = "النقاط: " + sr1Score + " ⭐";
+        btn.style.background = "#c8e6c9"; btn.style.borderColor = "#2e7d32"; fb.innerHTML = "🎉 " + cur.hint; fb.style.background = "#e8f5e9"; fb.style.color = "#1b5e20";
         setTimeout(function() { speakArabic(cur.hint); }, 600);
       } else {
-        playTone("lose");
-        btn.style.background = "#ffcdd2";
-        btn.style.borderColor = "#c62828";
-        btns.forEach(function(b) {
-          if (parseInt(b.dataset.idx, 10) === cur.ans) {
-            b.style.background = "#c8e6c9";
-            b.style.borderColor = "#2e7d32";
-          }
-        });
+        playTone("lose"); btn.style.background = "#ffcdd2"; btn.style.borderColor = "#c62828";
+        btns.forEach(function(b) { if (parseInt(b.dataset.idx, 10) === cur.ans) { b.style.background = "#c8e6c9"; b.style.borderColor = "#2e7d32"; } });
         var correctTxt = (cur.ans === 0) ? cur.o0 : ((cur.ans === 1) ? cur.o1 : cur.o2);
-        fb.innerHTML = "❌ إجابة خاطئة! الإجابة الصحيحة: " + correctTxt;
-        fb.style.background = "#ffebee";
-        fb.style.color = "#c62828";
+        fb.innerHTML = "❌ إجابة خاطئة! الإجابة الصحيحة: " + correctTxt; fb.style.background = "#ffebee"; fb.style.color = "#c62828";
         setTimeout(function() { speakArabic("الإجابة الصحيحة هي " + correctTxt); }, 600);
       }
-
-      var next = document.getElementById("sr1-next-btn");
-      next.style.display = "inline-block";
+      var next = document.getElementById("sr1-next-btn"); next.style.display = "inline-block";
       next.innerHTML = (sr1Idx === sira1List.length - 1) ? "عرض النتيجة النهائية 🏆" : "السؤال التالي ⬅️";
     }
-
     document.getElementById("sr1-next-btn").addEventListener("click", function() {
-      sr1Idx++;
-      if (sr1Idx < sira1List.length) {
-        sr1Load();
-      } else {
-        document.getElementById("sr1-quiz-area").style.display = "none";
-        document.getElementById("sr1-result-area").style.display = "block";
-        document.getElementById("sr1-final-score").innerHTML = "لقد حصلت على " + sr1Score + " من " + sira1List.length + " نجوم! ⭐";
-        playTone("win");
-        speakArabic("بارك الله فيك! لقد حصلت على " + sr1Score + " من " + sira1List.length + " نجوم");
-      }
+      sr1Idx++; if (sr1Idx < sira1List.length) sr1Load();
+      else { document.getElementById("sr1-quiz-area").style.display = "none"; document.getElementById("sr1-result-area").style.display = "block"; document.getElementById("sr1-final-score").innerHTML = "لقد حصلت على " + sr1Score + " من " + sira1List.length + " نجوم! ⭐"; playTone("win"); speakArabic("بارك الله فيك! لقد حصلت على " + sr1Score + " من " + sira1List.length + " نجوم"); }
     });
-
-    document.getElementById("sr1-restart-btn").addEventListener("click", function() {
-      sr1Idx = 0; sr1Score = 0;
-      document.getElementById("sr1-score").innerHTML = "النقاط: 0 ⭐";
-document.getElementById("sr1-result-area").style.display = "none";
-      document.getElementById("sr1-quiz-area").style.display = "block";
-      sr1Load();
-    });
+    document.getElementById("sr1-restart-btn").addEventListener("click", function() { sr1Idx = 0; sr1Score = 0; document.getElementById("sr1-score").innerHTML = "النقاط: 0 ⭐"; document.getElementById("sr1-result-area").style.display = "none"; document.getElementById("sr1-quiz-area").style.display = "block"; sr1Load(); });
   </script>
 </body>
 </html>
