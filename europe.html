@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>أعلام وخرائط دول قارة أوروبا (44 دولة)</title>
+</head>
+<body style="margin:0; padding:10px; background:transparent; font-family: Tahoma, sans-serif;">
+
+  <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border: 3px solid #1565c0; border-radius: 20px; padding: 20px; text-align: center; max-width: 760px; margin: 0 auto;">
+    
+    <div style="background: #1565c0; color: white; padding: 12px 20px; border-radius: 15px; margin-bottom: 15px;">
+      <h2 style="margin: 0; font-size: 22px; color: #fff;">🌍 مستكشف القارات: جميع دول أوروبا (44 دولة)</h2>
+      <p style="margin: 5px 0 0; font-size: 14px; color: #e3f2fd;">شاهد العلم والخريطة، واستمع للنطق الصحيح!</p>
+    </div>
+
+    <div id="eu-start-area" style="padding: 20px 10px;">
+      <div style="font-size: 65px; margin-bottom: 12px;">🏰🗺️🚩</div>
+      <p style="font-size: 18px; color: #0d47a1; font-weight: bold; margin-bottom: 18px;">تضم قارة أوروبا 44 دولة! اختر التحدي المناسب لك:</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto;">
+        <button type="button" id="eu-start-15" style="background: #1976d2; color: white; border: none; padding: 14px 25px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer;">
+          🚀 جولة سريعة (15 دولة عشوائية)
+        </button>
+        <button type="button" id="eu-start-44" style="background: #283593; color: white; border: none; padding: 14px 25px; font-size: 18px; font-weight: bold; border-radius: 30px; cursor: pointer;">
+          🏆 التحدي الشامل (كل الـ 44 دولة)
+        </button>
+      </div>
+    </div>
+
+    <div id="eu-play-wrapper" style="display: none;">
+      <div style="display: flex; justify-content: space-between; background: #ffffff; padding: 10px 15px; border-radius: 12px; margin-bottom: 18px; font-weight: bold; border: 2px solid #64b5f6;">
+        <span id="eu-progress" style="color: #0d47a1;">السؤال: 1 / 15</span>
+        <span id="eu-score" style="color: #2e7d32;">النقاط: 0 ⭐</span>
+      </div>
+
+      <div id="eu-quiz-area">
+        <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 14px;">
+          
+          <div style="background: #ffffff; padding: 8px; border-radius: 14px; border: 2px solid #90caf9; width: 170px;">
+            <div style="font-size: 12px; font-weight: bold; color: #1565c0; margin-bottom: 5px;">🚩 علم الدولة</div>
+            <img id="eu-flag-img" src="" alt="علم الدولة" style="width: 155px; height: 105px; object-fit: cover; border-radius: 8px; border: 1px solid #eee;">
+          </div>
+
+          <div style="background: #ffffff; padding: 8px; border-radius: 14px; border: 2px solid #81c784; width: 170px;">
+            <div style="font-size: 12px; font-weight: bold; color: #2e7d32; margin-bottom: 5px;">🗺️ خريطة الدولة</div>
+            <img id="eu-map-img" src="" alt="خريطة الدولة" style="width: 105px; height: 105px; object-fit: contain;">
+          </div>
+
+        </div>
+
+        <button type="button" id="eu-speak-btn" style="background: #00838f; color: white; border: none; padding: 9px 22px; font-size: 16px; font-weight: bold; border-radius: 20px; cursor: pointer; margin-bottom: 10px;">
+          🔊 استمع للسؤال
+        </button>
+
+        <h3 style="font-size: 20px; color: #0d47a1; margin: 5px 0 16px;">ما اسم هذه الدولة الأوروبية؟</h3>
+        
+        <div id="eu-options" style="display: grid; grid-template-columns: 1fr; gap: 11px; max-width: 500px; margin: 0 auto;"></div>
+        
+        <div id="eu-feedback" style="margin-top: 15px; font-size: 17px; font-weight: bold; padding: 8px; border-radius: 10px;"></div>
+        
+        <button type="button" id="eu-next-btn" style="display: none; margin: 14px auto 0; background: #1565c0; color: white; border: none; padding: 12px 30px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
+          الدولة التالية ⬅️
+        </button>
+      </div>
+
+      <div id="eu-result-area" style="display: none; padding: 20px;">
+        <div style="font-size: 65px; margin-bottom: 10px;">🏆</div>
+        <h3 style="font-size: 24px; color: #0d47a1;">أحسنت يا مستكشف أوروبا!</h3>
+        <p id="eu-final-score" style="font-size: 20px; font-weight: bold; color: #2e7d32; margin-bottom: 20px;"></p>
+        <button type="button" id="eu-restart-btn" style="background: #1976d2; color: white; border: none; padding: 14px 32px; font-size: 18px; font-weight: bold; border-radius: 25px; cursor: pointer;">
+          🔄 العودة للقائمة الرئيسية
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var rawEurope = "fr:فرنسا|es:إسبانيا|pt:البرتغال|it:إيطاليا|de:ألمانيا|gb:المملكة المتحدة|ie:أيرلندا|nl:هولندا|be:بلجيكا|lu:لوكسمبورغ|ch:سويسرا|at:النمسا|pl:بولندا|cz:التشيك|sk:سلوفاكيا|hu:المجر|ro:رومانيا|bg:بلغاريا|gr:اليونان|se:السويد|no:النرويج|fi:فنلندا|dk:الدنمارك|is:آيسلندا|ee:إستونيا|lv:لاتفيا|lt:ليتوانيا|ua:أوكرانيا|by:بيلاروسيا|md:مولدوفا|hr:كرواتيا|si:سلوفينيا|ba:البوسنة والهرسك|rs:صربيا|me:الجبل الأسود|mk:مقدونيا الشمالية|al:ألبانيا|ru:روسيا|mt:مالطا|cy:قبرص|ad:أندورا|mc:موناكو|sm:سان مارينو|li:ليختنشتاين";
+
+    var allEuropeCountries = rawEurope.split("|").map(function(item) {
+      var parts = item.split(":");
+      return { code: parts.shift(), name: parts.shift() };
+    });
+
+    var gameList = new Array();
+    var currentCountry = null;
+    var totalCount = 0;
+    var euIdx = 0;
+    var euScore = 0;
+    var euAnswered = false;
+    var sharedAudioCtx = null;
+
+    function shuffleArray(arr) {
+      return arr.slice().sort(function() { return Math.random() - 0.5; });
+    }
+
+    function getAudioCtx() {
+      if (!sharedAudioCtx) {
+        var AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (AudioCtx) sharedAudioCtx = new AudioCtx();
+      }
+      if (sharedAudioCtx && sharedAudioCtx.state === "suspended") {
+        sharedAudioCtx.resume();
+      }
+      return sharedAudioCtx;
+    }
+
+    function playTone(type) {
+      try {
+        var ctx = getAudioCtx();
+        if (!ctx) return;
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        var now = ctx.currentTime;
+
+        if (type === "win") {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(523.25, now);
+          osc.frequency.setValueAtTime(659.25, now + 0.1);
+          osc.frequency.setValueAtTime(783.99, now + 0.2);
+          osc.frequency.setValueAtTime(1046.50, now + 0.3);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+          osc.start(now);
+          osc.stop(now + 0.55);
+        } else if (type === "lose") {
+          osc.type = "triangle";
+          osc.frequency.setValueAtTime(240, now);
+          osc.frequency.setValueAtTime(175, now + 0.18);
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+          osc.start(now);
+          osc.stop(now + 0.45);
+        } else {
+          osc.type = "sine";
+          osc.frequency.setValueAtTime(440, now);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        }
+      } catch (e) {}
+    }
+
+    if ("speechSynthesis" in window) {
+      window.speechSynthesis.getVoices();
+      window.speechSynthesis.onvoiceschanged = function() {
+        window.speechSynthesis.getVoices();
+      };
+    }
+
+    function speakArabic(text) {
+      playTone("click");
+      try {
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel();
+          var msg = new SpeechSynthesisUtterance(text);
+          var voices = window.speechSynthesis.getVoices();
+          var arVoice = voices.find(function(v) { return v.lang && v.lang.toLowerCase().indexOf("ar") !== -1; });
+          if (arVoice) {
+            msg.voice = arVoice;
+            msg.lang = arVoice.lang;
+          } else {
+            msg.lang = "ar";
+          }
+          msg.rate = 0.9;
+          window.speechSynthesis.speak(msg);
+        }
+      } catch (e) {}
+    }
+
+    function startEuropeGame(count) {
+      gameList = shuffleArray(allEuropeCountries).slice(0, count);
+      totalCount = gameList.length;
+      euIdx = 0;
+      euScore = 0;
+      document.getElementById("eu-score").innerHTML = "النقاط: 0 ⭐";
+      document.getElementById("eu-start-area").style.display = "none";
+      document.getElementById("eu-result-area").style.display = "none";
+      document.getElementById("eu-quiz-area").style.display = "block";
+      document.getElementById("eu-play-wrapper").style.display = "block";
+      speakArabic("هيا نتعرف على دول قارة أوروبا!");
+      euLoad();
+    }
+
+    document.getElementById("eu-start-15").addEventListener("click", function() { startEuropeGame(15); });
+    document.getElementById("eu-start-44").addEventListener("click", function() { startEuropeGame(44); });
+    document.getElementById("eu-speak-btn").addEventListener("click", function() { speakArabic("ما اسم هذه الدولة الأوروبية؟"); });
+
+    function euLoad() {
+      euAnswered = false;
+      document.getElementById("eu-feedback").innerHTML = "";
+      document.getElementById("eu-feedback").style.background = "transparent";
+      document.getElementById("eu-next-btn").style.display = "none";
+
+      currentCountry = gameList.pop();
+      euIdx++;
+      document.getElementById("eu-progress").innerHTML = "السؤال: " + euIdx + " / " + totalCount;
+      
+      var flagUrl = "https://" + "flagcdn.com" + "/w320/" + currentCountry.code + ".png";
+      var mapUrl = "https://" + "raw." + "githubusercontent.com" + "/djaiss/mapsicon/master/all/" + currentCountry.code + "/256.png";
