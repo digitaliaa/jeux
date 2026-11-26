@@ -60,10 +60,24 @@
       } catch (e) {}
     }
     if ("speechSynthesis" in window) { window.speechSynthesis.getVoices(); window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); }; }
-    function speakArabic(text) {
+        function speakArabic(text) {
       playTone("click");
-      try { if ("speechSynthesis" in window) { window.speechSynthesis.cancel(); var msg = new SpeechSynthesisUtterance(text); var v = window.speechSynthesis.getVoices().find(function(x) { return x.lang && x.lang.toLowerCase().indexOf("ar") !== -1; }); if (v) { msg.voice = v; msg.lang = v.lang; } else { msg.lang = "ar"; } msg.rate = 0.88; window.speechSynthesis.speak(msg); } } catch (e) {}
+      try {
+        if ("speechSynthesis" in window) {
+          var v = window.speechSynthesis.getVoices().find(function(x) { return x.lang && x.lang.toLowerCase().indexOf("ar") === 0; });
+          if (v) {
+            window.speechSynthesis.cancel();
+            var clean = text.replace(/[^\u0600-\u06FF0-9\s؟!.،]/g, "");
+            var msg = new SpeechSynthesisUtterance(clean);
+            msg.voice = v;
+            msg.lang = v.lang;
+            msg.rate = 0.88;
+            window.speechSynthesis.speak(msg);
+          }
+        }
+      } catch (e) {}
     }
+
     document.getElementById("sr1-start-btn").addEventListener("click", function() { document.getElementById("sr1-start-area").style.display = "none"; document.getElementById("sr1-play-wrapper").style.display = "block"; sr1Load(); });
     document.getElementById("sr1-speak-btn").addEventListener("click", function() { speakArabic(sira1List.slice(sr1Idx, sr1Idx + 1).pop().q); });
     function sr1Load() {
