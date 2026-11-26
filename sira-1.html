@@ -62,7 +62,7 @@
     if ("speechSynthesis" in window) { window.speechSynthesis.getVoices(); window.speechSynthesis.onvoiceschanged = function() { window.speechSynthesis.getVoices(); }; }
         function speakArabic(text) {
       playTone("click");
-      try {
+    }
         if ("speechSynthesis" in window) {
           var v = window.speechSynthesis.getVoices().find(function(x) { return x.lang && x.lang.toLowerCase().indexOf("ar") === 0; });
           if (v) {
